@@ -21,6 +21,7 @@
  echo "<th>\nPrecio</th>\n</tr>\n";
  //Mostramos el carrito
  $totalUnidades = 0;
+  //iniciamos con que el total es 0
  $total =0;
  if(empty($carrito)){
  echo "<tr>\n<td align=\"center\" colspan=\"2\">\n";
@@ -28,12 +29,17 @@
  }
  else{
  foreach($carrito as $ref => $unidades){
-$precios = array( 'ref1' =>5, 'ref2' =>3, 'ref3'=> 2);
+  //Asignamos los precios a cada ref, aprovechamos que el array carrito hace mención de estos mismo
+ $precios = array( 'ref1' =>5, 'ref2' =>3, 'ref3'=> 2);
+  //colocamos a $ref dentro de nuestro array precios para que nos muestre los precios respectivos
  $precio=$precios[$ref];
+  //Calculamos los precios por unidad de cada ref 
  $precioTotal = $precio * $unidades;
+  //Vamos sumando cada uno de los precios para mostrarlos como el total
  $total += $precioTotal;
  echo "<tr >\n<td>\n$ref</td>\n";
  echo "<td align=\"center\">$unidades</td>\n";
+  //precio que se mostrara en el carrito por cada ref
  echo "<td align=\"center\">".$precio * $unidades." &euro; </td>\n</tr>\n";
  $totalUnidades += $unidades;
  }
@@ -44,6 +50,7 @@ colspan=\"2\">\n";
 echo "Número de unidades: ".  $totalUnidades . "</td>\n";
 echo "<td align=\"center\"
 colspan=\"2\">\n";
+  //Mostramos el total a pagar
 echo "Total: ". $total . " &euro; </td>\n</tr>\n";
 echo "</table>\n";
 return true;
